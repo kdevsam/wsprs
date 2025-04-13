@@ -41,7 +41,7 @@ function App() {
   const [showTutorialPopup, setShowTutorialPopup] = useState(false);
   const [tiles, setTiles] = useState(initialTiles);
   const [whisperedTiles, setWhisperedTiles] = useState<number[]>([]);
-  const [whisperStarted, setWhisperStarted] = useState(false);
+  // const [whisperStarted, setWhisperStarted] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [lost, setLost] = useState(false);
@@ -56,7 +56,7 @@ function App() {
     return `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
   };
   const [dailyPlayed, setDailyPlayed] = useState(false);
-  const [todaySeed, setTodaySeed] = useState(getTodaySeed());
+  const [todaySeed] = useState(getTodaySeed());
   const [lastResult, setLastResult] = useState<"won" | "lost" | null>(null);
 
   useEffect(() => {
