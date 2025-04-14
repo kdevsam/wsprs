@@ -75,7 +75,7 @@ const Tile = ({
             : undefined
         }
         animate={{
-          ...(pulse
+          ...(pulse && !won && !lost
             ? {
                 scale: [1, 1.1, 1],
                 transition: { repeat: Infinity, duration: 1.2 },
