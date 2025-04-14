@@ -75,40 +75,43 @@ const Tile = ({
             : undefined
         }
         animate={{
+          ...(pulse
+            ? {
+                scale: [1, 1.1, 1],
+                transition: { repeat: Infinity, duration: 1.2 },
+              }
+            : {}),
           ...(blowaway
             ? {
                 x: 800 + Math.random() * 400,
                 y: (Math.random() - 0.5) * 400,
                 rotate: Math.random() * 720 - 360,
                 opacity: 0,
-                transition: { duration: 2, ease: "easeOut" },
               }
-            : won
+            : { opacity: 1 }),
+          ...(won
             ? {
                 opacity: 0,
                 y: -100,
-                transition: { duration: 2, ease: "easeOut" },
               }
-            : pulse
-            ? {
-                scale: [1, 1.1, 1],
-                transition: { repeat: Infinity, duration: 1.2 },
-              }
-            : {
-                scale: 1,
-              }),
+            : {}),
         }}
         transition={{
           duration: blowaway ? 2 : won ? 2 : 0.8,
           ease: blowaway || won ? "easeOut" : "easeInOut",
         }}
-        className={`relative z-10 w-28 h-28 sm:w-24 sm:h-24 rounded-2xl shadow-lg flex items-center justify-center text-white text-4xl font-bold ${
-          tile.clicked
-            ? "bg-gradient-to-br from-green-600 to-green-800 ring-4 ring-green-400"
-            : tile.wrong
-            ? "bg-gradient-to-br from-red-600 to-red-800 ring-4 ring-red-400"
-            : "bg-gradient-to-br from-gray-800 to-gray-900"
-        } ${
+        className={`relative z-10 
+  w-16 h-16    
+  sm:w-24 sm:h-24
+  p-1 sm:p-3
+  rounded-2xl shadow-lg flex items-center justify-center
+  text-white text-2xl sm:text-4xl font-bold ${
+    tile.clicked
+      ? "bg-gradient-to-br from-green-600 to-green-800 ring-4 ring-green-400"
+      : tile.wrong
+      ? "bg-gradient-to-br from-red-600 to-red-800 ring-4 ring-red-400"
+      : "bg-gradient-to-br from-gray-800 to-gray-900"
+  } ${
           tile.disabled || tile.clicked || tile.wrong || blowaway
             ? "pointer-events-none"
             : "hover:scale-110 hover:ring-4 hover:ring-indigo-300"

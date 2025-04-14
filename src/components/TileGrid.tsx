@@ -17,9 +17,22 @@ const TileGrid = ({
 }) => {
   return (
     <div
-      className={`grid grid-cols-4 gap-3 sm:gap-5 p-4 sm:p-6 relative transition-all duration-500 ${
-        lost && !blowaway ? "opacity-100" : "opacity-100"
-      }`}
+      className={`
+      grid
+      grid-cols-4
+      gap-2
+      sm:gap-4
+      max-w-[280px] 
+      sm:max-w-[500px]
+      w-full
+      mx-auto
+      p-3
+      sm:p-6
+      relative
+      transition-all
+      duration-500
+      ${lost && !blowaway ? "opacity-100" : "opacity-100"}
+    `}
     >
       {tiles.map((tile) => (
         <Tile
