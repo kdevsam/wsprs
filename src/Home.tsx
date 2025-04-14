@@ -97,8 +97,8 @@ const Home = () => {
             onSelect={(mode) => {
               if (mode === "daily") {
                 window.location.href = "/daily";
-              } else if (mode === "practice") {
-                window.location.href = "/practice";
+              } else if (mode === "stack") {
+                window.location.href = "/stack";
               } else if (mode === "secret") {
                 window.location.href = "/secret";
               }
