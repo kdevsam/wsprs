@@ -5,12 +5,12 @@ const Ghosts = () => {
   const [ghosts, setGhosts] = useState<any[]>([]);
 
   useEffect(() => {
-    const initialGhosts = Array.from({ length: 30 }).map(() => createGhost());
+    const initialGhosts = Array.from({ length: 20 }).map(() => createGhost());
     setGhosts(initialGhosts);
 
     const interval = setInterval(() => {
       setGhosts((prev) => {
-        if (prev.length < 30) {
+        if (prev.length < 20) {
           return [...prev, createGhost()];
         }
         return prev;
