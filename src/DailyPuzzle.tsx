@@ -150,7 +150,7 @@ const DailyPuzzle = () => {
     await new Promise((r) => setTimeout(r, 1000));
 
     setPreparing(true);
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 1000));
     setPreparingDone(true);
     await new Promise((r) => setTimeout(r, 2000));
     setPreparing(false);
@@ -242,7 +242,11 @@ const DailyPuzzle = () => {
           {/* Preparing */}
           <AnimatePresence>
             {preparing && (
-              <motion.div className="absolute inset-0 flex flex-col items-center justify-center bg-black/30 backdrop-blur-xl z-50">
+              <motion.div
+                className={`absolute inset-0 flex flex-col items-center justify-center z-50 bg-black/30 ${
+                  !preparingDone ? "backdrop-blur-xl" : ""
+                }`}
+              >
                 <motion.h1
                   className="text-4xl sm:text-5xl font-bold text-white mb-4"
                   initial={{ y: 0 }}
