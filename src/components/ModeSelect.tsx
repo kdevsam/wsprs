@@ -4,7 +4,7 @@ const ModeSelect = ({
   onBack,
 }: {
   dailyPlayed: boolean;
-  onSelect: (mode: "daily" | "practice" | "secret") => void;
+  onSelect: (mode: "daily" | "stack" | "secret") => void;
   onBack: () => void;
 }) => {
   return (

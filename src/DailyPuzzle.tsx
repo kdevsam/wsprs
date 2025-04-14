@@ -37,7 +37,7 @@ const initialTiles = Array.from({ length: 16 }, (_, i) => ({
 const DailyPuzzle = () => {
   const [tiles, setTiles] = useState(initialTiles);
   const [whisperedTiles, setWhisperedTiles] = useState<number[]>([]);
-  const [initialBoardShown, setInitialBoardShown] = useState(false);
+  const [, setInitialBoardShown] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [lost, setLost] = useState(false);
