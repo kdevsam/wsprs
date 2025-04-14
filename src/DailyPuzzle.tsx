@@ -190,7 +190,7 @@ const DailyPuzzle = () => {
     );
     await new Promise((r) => setTimeout(r, 1000));
     setTiles(newTiles.map((tile) => ({ ...tile, preview: false })));
-
+    await new Promise((r) => setTimeout(r, 300));
     shuffleTiles();
     setWhisperedTiles(
       newTiles.filter((_, idx) => randomIndexes.includes(idx)).map((t) => t.id)
