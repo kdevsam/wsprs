@@ -15,7 +15,7 @@ const StackGame = () => {
   const [won, setWon] = useState(false);
   const [score, setScore] = useState(0);
   const [movingRight, setMovingRight] = useState(true);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const gameWidth = 300;
   const gameHeight = 480;
