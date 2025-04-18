@@ -71,7 +71,7 @@ const Tile = ({
         whileTap={!lost ? { scale: 0.98 } : undefined}
         whileHover={
           !tile.disabled && !tile.clicked && !tile.wrong && !tile.blowaway
-            ? { scale: 1.05 }
+            ? { scale: 1.02 }
             : undefined
         }
         animate={{
@@ -101,28 +101,27 @@ const Tile = ({
           ease: blowaway || won ? "easeOut" : "linear",
           type: "tween",
         }}
+        className={`relative z-10 
+    w-16 h-16 sm:w-24 sm:h-24
+    p-1 sm:p-3
+    rounded-2xl shadow-lg flex items-center justify-center
+    text-white text-2xl sm:text-4xl font-bold ${
+      tile.clicked
+        ? "bg-gradient-to-br from-green-600 to-green-800 ring-4 ring-green-400"
+        : tile.wrong
+        ? "bg-gradient-to-br from-red-600 to-red-800 ring-4 ring-red-400"
+        : "bg-gradient-to-br from-gray-800 to-gray-900"
+    } ${
+          tile.disabled || tile.clicked || tile.wrong || blowaway
+            ? "pointer-events-none"
+            : "hover:scale-105 hover:ring-4 hover:ring-indigo-300"
+        } transition-all`}
         style={{
           touchAction: "manipulation",
           WebkitTapHighlightColor: "transparent",
           WebkitUserSelect: "none",
           userSelect: "none",
         }}
-        className={`relative z-10 
-  w-16 h-16    
-  sm:w-24 sm:h-24
-  p-1 sm:p-3
-  rounded-2xl shadow-lg flex items-center justify-center
-  text-white text-2xl sm:text-4xl font-bold ${
-    tile.clicked
-      ? "bg-gradient-to-br from-green-600 to-green-800 ring-4 ring-green-400"
-      : tile.wrong
-      ? "bg-gradient-to-br from-red-600 to-red-800 ring-4 ring-red-400"
-      : "bg-gradient-to-br from-gray-800 to-gray-900"
-  } ${
-          tile.disabled || tile.clicked || tile.wrong || blowaway
-            ? "pointer-events-none"
-            : "hover:scale-110 hover:ring-4 hover:ring-indigo-300"
-        } transition-all`}
       >
         {tile.icon}
       </motion.button>
