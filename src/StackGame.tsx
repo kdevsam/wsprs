@@ -10,6 +10,8 @@ interface Block {
 
 const StackGame = () => {
   const [stack, setStack] = useState<Block[]>([]);
+  const [stackCount, setStackCount] = useState(0);
+
   const [current, setCurrent] = useState<Block | null>(null);
   const [gameOver, setGameOver] = useState(false);
   const [won, setWon] = useState(false);
@@ -79,7 +81,7 @@ const StackGame = () => {
     const newStack = [...stack, newBlock];
     setStack(newStack);
     setScore((s) => s + 1);
-
+    setStackCount((prev) => prev + 1);
     if (newStack.length === maxBlocks) {
       setWon(true);
       setCurrent(null);
@@ -116,7 +118,7 @@ const StackGame = () => {
   }, [current, movingRight, gameOver, won]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black p-6 text-white relative overflow-hidden">
+    <div className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black p-6 text-white relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/10 via-purple-900/10 to-black/30 blur-3xl animate-floatSlow pointer-events-none" />
       <motion.img
@@ -124,6 +126,13 @@ const StackGame = () => {
         alt="ghost"
         className="absolute top-1/4 left-1/2 w-32 h-32 opacity-10 animate-floatSlow pointer-events-none"
         style={{ transform: "translateX(-50%)" }}
+      />
+      <motion.img
+        src="/ghost-climber.png"
+        alt="Ghost"
+        animate={{ y: -stackCount * blockHeight }}
+        transition={{ type: "spring", stiffness: 200, damping: 20 }}
+        className="absolute left-1/2 -translate-x-1/2 w-16 h-16 z-10"
       />
 
       <h1 className="text-5xl font-bold text-indigo-200 tracking-widest mb-6 z-10 font-dreamy">
