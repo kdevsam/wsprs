@@ -72,17 +72,19 @@ const DailyPuzzle = () => {
   }, []);
 
   useEffect(() => {
-    if (!alreadyPlayedToday) return;
+    if (!alreadyPlayedToday && !gameOver) return;
+
     const calc = () => {
       const now = new Date();
       const midnight = new Date();
       midnight.setHours(24, 0, 0, 0);
       return Math.floor((midnight.getTime() - now.getTime()) / 1000);
     };
+
     setSecondsLeft(calc());
     const interval = setInterval(() => setSecondsLeft(calc()), 1000);
     return () => clearInterval(interval);
-  }, [alreadyPlayedToday]);
+  }, [alreadyPlayedToday, gameOver]);
 
   const formatTime = (secs: number) => {
     const hours = Math.floor(secs / 3600);
@@ -293,7 +295,14 @@ const DailyPuzzle = () => {
             <motion.img
               src="/angryGhost.png"
               initial={{ x: "-20%", opacity: 0, scale: 1 }}
-              animate={{ x: "150%", opacity: 1, scale: 1.2 }}
+              animate={{
+                x:
+                  typeof window !== "undefined" && window.innerWidth < 640
+                    ? "100%"
+                    : "150%",
+                opacity: 1,
+                scale: 1.2,
+              }}
               transition={{ duration: 1.2 }}
               className="absolute top-1/2 left-0 w-36 h-36 pointer-events-none"
               style={{ transform: "translateY(-50%)" }}
