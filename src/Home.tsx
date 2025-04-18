@@ -94,25 +94,21 @@ const Home = () => {
       {/* Buttons or ModeSelect */}
       {/* Play/Shop buttons */}
       {!showModeSelect ? (
-        <div className="flex flex-col items-center gap-6 p-8 rounded-2xl bg-gray-900/40 backdrop-blur-lg shadow-2xl z-10">
-          {/* Play Button */}
+        <div className="flex gap-12 z-10">
           <button
             onClick={() => setShowModeSelect(true)}
-            className="flex flex-col items-center gap-2 p-6 rounded-2xl bg-indigo-400/20 text-white transform transition-transform hover:scale-105 hover:brightness-110 shadow-lg backdrop-blur-md w-72"
+            className="group relative w-28 h-28 rounded-full bg-indigo-400/10 hover:bg-indigo-400/20 border border-indigo-400/20 text-white flex flex-col items-center justify-center shadow-xl backdrop-blur-md hover:scale-105 transition-all"
           >
-            <img src="/play.png" alt="Play" className="w-16 h-16 mb-2" />
-            <span className="text-2xl font-bold">Play</span>
-            <p className="text-sm opacity-70">Select your mode</p>
+            <img src="/play.png" alt="Play" className="w-10 h-10 mb-1" />
+            <span className="text-sm font-semibold tracking-wider">Play</span>
           </button>
 
-          {/* Shop Button */}
           <button
             onClick={() => (window.location.href = "/shop")}
-            className="flex flex-col items-center gap-2 p-6 rounded-2xl bg-green-400/20 text-white transform transition-transform hover:scale-105 hover:brightness-110 shadow-lg backdrop-blur-md w-72"
+            className="group relative w-28 h-28 rounded-full bg-green-400/10 hover:bg-green-400/20 border border-green-400/20 text-white flex flex-col items-center justify-center shadow-xl backdrop-blur-md hover:scale-105 transition-all"
           >
-            <img src="/shop.png" alt="Shop" className="w-16 h-16 mb-2" />
-            <span className="text-2xl font-bold">Shop</span>
-            <p className="text-sm opacity-70">Customize your journey</p>
+            <img src="/shop.png" alt="Shop" className="w-10 h-10 mb-1" />
+            <span className="text-sm font-semibold tracking-wider">Shop</span>
           </button>
         </div>
       ) : (

@@ -68,7 +68,7 @@ const Tile = ({
       {/* Tile Core */}
       <motion.button
         onClick={onClick}
-        whileTap={!lost ? { scale: 0.95 } : undefined}
+        whileTap={!lost ? { scale: 0.98 } : undefined}
         whileHover={
           !tile.disabled && !tile.clicked && !tile.wrong && !tile.blowaway
             ? { scale: 1.05 }
@@ -97,8 +97,15 @@ const Tile = ({
             : {}),
         }}
         transition={{
-          duration: blowaway ? 2 : won ? 2 : 0.8,
-          ease: blowaway || won ? "easeOut" : "easeInOut",
+          duration: blowaway ? 2 : won ? 2 : 0.1,
+          ease: blowaway || won ? "easeOut" : "linear",
+          type: "tween",
+        }}
+        style={{
+          touchAction: "manipulation",
+          WebkitTapHighlightColor: "transparent",
+          WebkitUserSelect: "none",
+          userSelect: "none",
         }}
         className={`relative z-10 
   w-16 h-16    
