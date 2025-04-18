@@ -7,6 +7,7 @@ import StackTutorial from "./components/StackTutorial";
 import SecretTutorial from "./components/SecretTutorial";
 
 const Home = () => {
+  const [secondsLeft, setSecondsLeft] = useState(0);
   const [showModeSelect, setShowModeSelect] = useState(false);
   const [showTutorialPopup, setShowTutorialPopup] = useState(false);
   const [pendingMode, setPendingMode] = useState<
@@ -28,6 +29,19 @@ const Home = () => {
 
     if (lastPlayed === todaySeed) {
       setDailyPlayed(true);
+      const calc = () => {
+        const now = new Date();
+        const midnight = new Date();
+        midnight.setHours(24, 0, 0, 0);
+        return Math.max(
+          0,
+          Math.floor((midnight.getTime() - now.getTime()) / 1000)
+        );
+      };
+
+      setSecondsLeft(calc());
+      const interval = setInterval(() => setSecondsLeft(calc()), 1000);
+      return () => clearInterval(interval);
     }
   }, []);
 
@@ -66,7 +80,7 @@ const Home = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black p-6 relative overflow-hidden">
       {/* Coins Top Right */}
-      <div className="fixed top-4 right-6 text-white text-xl font-bold font-dreamy flex items-center gap-2 z-[999] pointer-events-none">
+      <div className="fixed top-4 right-6 text-white text-xl font-bold flex items-center gap-2 z-[999] pointer-events-none">
         <img
           src="/coin.png"
           alt="coin"
@@ -121,6 +135,7 @@ const Home = () => {
             dailyPlayed={dailyPlayed}
             onSelect={handleModeSelect}
             onBack={() => setShowModeSelect(false)}
+            secondsLeft={secondsLeft}
           />
         </motion.div>
       )}
