@@ -20,7 +20,7 @@ const TileGrid = ({
       className={`
       grid
       grid-cols-4
-      gap-2
+      gap-6
       sm:gap-4
       max-w-[280px] 
       sm:max-w-[500px]

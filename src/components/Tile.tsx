@@ -106,7 +106,7 @@ const Tile = ({
           ease: blowaway || won ? "easeOut" : "linear",
           type: "tween",
         }}
-        className={`text-[16px] sm:text-3xl font-bold w-16 h-16 sm:w-24 sm:h-24 rounded-2xl flex items-center justify-center
+        className={`text-[32px] sm:text-3xl font-bold w-16 h-16 sm:w-24 sm:h-24 rounded-2xl flex items-center justify-center
     text-white text-2xl sm:text-4xl font-bold ${
       tile.clicked
         ? "bg-gradient-to-br from-green-600 to-green-800 ring-4 ring-green-400"
