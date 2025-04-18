@@ -116,14 +116,6 @@ const Home = () => {
             <img src="/play.png" alt="Play" className="w-10 h-10 mb-1" />
             <span className="text-sm font-semibold tracking-wider">Play</span>
           </button>
-
-          <button
-            onClick={() => (window.location.href = "/shop")}
-            className="group relative w-28 h-28 rounded-full bg-green-400/10 hover:bg-green-400/20 border border-green-400/20 text-white flex flex-col items-center justify-center shadow-xl backdrop-blur-md hover:scale-105 transition-all"
-          >
-            <img src="/shop.png" alt="Shop" className="w-10 h-10 mb-1" />
-            <span className="text-sm font-semibold tracking-wider">Shop</span>
-          </button>
         </div>
       ) : (
         <motion.div

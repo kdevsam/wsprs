@@ -58,10 +58,8 @@ const ModeSelect = ({
         </div>
 
         {/* Stack Mode */}
-        <div
-          className="p-6 rounded-2xl shadow-2xl cursor-pointer bg-green-500/20 border border-green-400 text-white transform transition-transform hover:scale-105"
-          onClick={() => onSelect("stack")}
-        >
+
+        <div className="p-6 rounded-2xl shadow-2xl cursor-not-allowed bg-gray-800/50 border border-gray-700 text-gray-400 transform transition-transform">
           <img
             src="/stack.png"
             alt="Stack"
