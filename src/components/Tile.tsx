@@ -66,12 +66,17 @@ const Tile = ({
       </AnimatePresence>
 
       {/* Tile Core */}
-      <motion.button
+      <motion.div
+        role="button"
+        tabIndex={0}
         onClick={onClick}
+        onKeyDown={(e) =>
+          e.key === "Enter" || e.key === " " ? onClick() : null
+        }
         whileTap={!lost ? { scale: 0.98 } : undefined}
         whileHover={
           !tile.disabled && !tile.clicked && !tile.wrong && !tile.blowaway
-            ? { scale: 1.02 }
+            ? { scale: 1.05 }
             : undefined
         }
         animate={{
@@ -124,7 +129,7 @@ const Tile = ({
         }}
       >
         {tile.icon}
-      </motion.button>
+      </motion.div>
     </div>
   );
 };
